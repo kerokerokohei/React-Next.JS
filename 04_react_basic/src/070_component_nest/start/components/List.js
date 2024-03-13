@@ -1,13 +1,17 @@
 const List = () => {
-    return (
-        <ul>
-        <li>item-1</li>
-        <li>item-2</li>
-        <li>item-3</li>
-        <li>item-4</li>
-        <li>item-5</li>
-      </ul>
-    )
-}
+  return (
+    <ul>
+      <li>item-1</li>
+      <li>item-2</li>
+      <li>item-3</li>
+      <li>item-4</li>
+      <li>item-5</li>
+    </ul>
+  );
+};
 
-export { List }
+const List2 = () => {
+  return <div>Hello conponent2</div>;
+};
+
+export { List, List2 };
