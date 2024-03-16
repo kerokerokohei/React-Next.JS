@@ -7,12 +7,17 @@ const Example = () => {
   return (
     <>
       <h3>配列のフィルター</h3>
-      <input type="text"  value={Filterval} onChange={(e) => setfilterval(e.target.value)}/>
+      <input
+        type="text"
+        value={Filterval}
+        onChange={(e) => setfilterval(e.target.value)}
+      />
       <ul>
         {animals
+          .filter((animal) => animal.indexOf(Filterval) !== -1)
           .map((animal) => (
-          <li>{animal}</li>
-        ))}
+            <li>{animal}</li>
+          ))}
       </ul>
     </>
   );
