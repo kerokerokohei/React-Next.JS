@@ -1,4 +1,6 @@
 import { useState } from "react";
+import List from "./List";
+import Form from "./Form";
 
 const Todo = () => {
   const todosList = [
@@ -17,7 +19,6 @@ const Todo = () => {
   ];
 
   const [list, setList] = useState(todosList);
-  const [text, setText] = useState();
 
   const deleteTask = (oldtaskid) => {
     const newLists = list.filter((task) => {
@@ -26,29 +27,16 @@ const Todo = () => {
     setList(newLists);
   };
 
-  const changeValue = (e) => {
-    setText(e.target.value);
-  };
-
   const addnewTask = (e) => {
     const idnum = list.length + 1;
-    const newtask = { id: idnum, content: text };
+    const newtask = { id: idnum, content: e.target.value };
     setList((prevlist) => [...prevlist, newtask]);
-    setText("");
   };
 
   return (
     <>
-      {list.map((task) => {
-        return (
-          <div key={task.id}>
-            <button onClick={() => deleteTask(task.id)}>完了</button>
-            <div>{task.content}</div>
-          </div>
-        );
-      })}
-      <input onChange={changeValue} value={text} />
-      <button onClick={addnewTask}>追加</button>
+      <List list={list} deleteTask={deleteTask} />
+      <Form addnewTask={() => addnewTask()} />
     </>
   );
 };
